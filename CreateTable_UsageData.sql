@@ -1,27 +1,27 @@
 CREATE TABLE public. UsageData
 (
     CallDate date NOT NULL,
-    CallTime time without time zone NOT NULL,
-    CallMon int NOT NULL,
-    CallDay int NOT NULL,
-    ClidPre varchar,
-    ClidName varchar,
-    ClidNumber int NOT NULL,
-    "Source"  int NOT NULL,
-    Destination int NOT NULL,
-    DContext varchar NOT NULL,
-    Channel varchar NOT NULL,
-    DstChannel varchar,
+	Source  varchar,
+	Destination varchar,
+	Channel varchar NOT NULL,
+	DstChannel varchar,
     LastApp varchar NOT NULL,
     LastData varchar,
-    DurationMin int NOT NULL,
-    Disposition varchar NOT NULL,
-    AmaFlags int NOT NULL,
-    AccountCode varchar,
-    UniqueID int NOT NULL,
+    Duration int NOT NULL,
+	BillSec int NOT NULL, 
+	Disposition varchar NOT NULL,
+    UniqueID varchar NOT NULL,
+	UniqueCall int NOT NULL,
     UniqueSub int NOT NULL,
-    PRIMARY KEY (UniqueID),
-	FOREIGN KEY (Destination) REFERENCES Users("Extension")
+	CallQuarter int NOT NULL,
+	CallYear int NOT NULL,
+	CallMon int NOT NULL,
+    CallDay int NOT NULL,
+	CallTime time without time zone NOT NULL,
+    DurationMin varchar NOT NULL,	 
+    ClidName varchar,
+    ClidNumber varchar,
+    PRIMARY KEY (UniqueID)
 )
 WITH (
     OIDS = FALSE
@@ -29,3 +29,5 @@ WITH (
 
 ALTER TABLE public. UsageData
     OWNER to postgres;
+	
+Select * from usagedata
